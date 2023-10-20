@@ -1,0 +1,78 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$aws\
+$env_var\
+$custom\
+$sudo\
+$jobs\
+$status\
+$shell
+$character"""
+
+scan_timeout = 10
+add_newline = true
+
+[status]
+disabled = false
+symbol = ''
+not_executable_symbol = ''
+not_found_symbol = ''
+format = '[\[$status\]](red)'
+
+[character]
+success_symbol = '[>](bright-white)'
+error_symbol = '[>](bright-white)'
+format = '$symbol '
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+truncation_symbol = "+/"
+style = 'bright-green'
+format = '[$path]($style)[$read_only]($read_only_style) '
+repo_root_format = '[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+before_repo_root_style = 'bright-cyan'
+repo_root_style = 'italic bold fg:bright-green'
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style)'
+symbol = '⎈ '
+style = 'cyan'
+
+[aws]
+format = '[(\($profile)(:$duration)\)]($style)'
+symbol = ''
+expiration_symbol = '[EXPIRED](bold red)'
+style = 'dark-grey'
+
+[aws.region_aliases]
+eu-west-1 = 'IE'
+eu-north-1 = 'SE'
+
+[git_commit]
+commit_hash_length = 8
+style = "bold fg:bright-white"
+
+[git_status]
+# up_to_date = '[✔](green)'
+format = '([|](bright-white)($all_status)($ahead_behind))[\)](bright-white)'
+stashed = ''
+untracked = ''
+modified = '[✚($count)](bold fg:bright-blue)'
+staged = '[●($count)](yellow)'
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+[git_branch]
+format = '[\(](bold fg:bright-white)[$branch](bold fg:bright-purple)(:$remote_branch)'
+only_attached = false
