@@ -8,7 +8,6 @@ $git_state\
 $git_metrics\
 $git_status\
 $docker_context\
-$aws\
 $env_var\
 $custom\
 $sudo\
@@ -47,16 +46,6 @@ disabled = false
 format = '[$symbol$context( \($namespace\))]($style)'
 symbol = '⎈ '
 style = 'cyan'
-
-[aws]
-format = '[(\($profile)(:$duration)\)]($style)'
-symbol = ''
-expiration_symbol = '[EXPIRED](bold red)'
-style = 'dark-grey'
-
-[aws.region_aliases]
-eu-west-1 = 'IE'
-eu-north-1 = 'SE'
 
 [git_commit]
 commit_hash_length = 8
